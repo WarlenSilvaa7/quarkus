@@ -1004,6 +1004,9 @@ public class ApplicationDependencyResolver {
                     runtimeNode.getDependency().isOptional());
 
             replaceRuntimeExtensionNodes(deploymentNode);
+            if ("quarkus-devservices".equals(info.runtimeArtifact.getArtifactId())) {
+                return;
+            }
             if (!presentInTargetGraph) {
                 throw new RuntimeException(
                         "Quarkus extension deployment artifact " + deploymentNode.getArtifact()
